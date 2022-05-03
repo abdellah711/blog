@@ -20,6 +20,11 @@ const Container = styled.a`
     align-items: center;
     gap: 1rem;
     cursor: pointer;
+
+    h1 {
+      color: ${({ theme }) => theme.colors.text?.display};
+      font-weight: 400;
+    }
 `;
 
 export default Logo
