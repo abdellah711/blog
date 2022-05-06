@@ -10,13 +10,13 @@ export const getRecentArticles = async () => {
                 title
                 excerpt
                 slug
+                createdAt
                 image {
                     url
                 }
 
                 author {
                     name
-                    createdAt
                     photo {
                         url
                     }

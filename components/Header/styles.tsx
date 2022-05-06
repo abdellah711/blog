@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 
 export const Header = styled.header`
-    padding: 1rem;
+    padding: 1rem var(--container-inline-pd);
     display: flex;
     justify-content: space-between;
 `;

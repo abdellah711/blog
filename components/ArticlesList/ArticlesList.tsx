@@ -1,5 +1,6 @@
 import { FC } from "react";
 import { IArticle } from "types/article"
+import ArticleItem from "./ArticleItem";
 
 
 interface Props {
@@ -10,7 +11,7 @@ const ArticlesList: FC<Props> = ({ articles }) => {
 
     return (
         <div>
-            {articles?.map(article => (<div key={article.slug}>{article.title}</div>))}
+            {articles?.map(article => (<ArticleItem key={article.slug} article={article}/>))}
         </div>
     )
 }
