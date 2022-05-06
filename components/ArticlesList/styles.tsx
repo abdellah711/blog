@@ -15,6 +15,10 @@ export const Card = styled.div`
     h2{
         color: ${({ theme }) => theme.colors.text?.title};
     }
+
+    h3{
+        font-weight: 600;
+    }
 `;
 
 export const Image = styled.img`

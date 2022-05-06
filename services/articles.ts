@@ -1,7 +1,7 @@
+import { GRAPHQL_URL } from 'config/variables'
 import { gql, request } from 'graphql-request'
 import { IArticle } from 'types/article'
 
-const GRAPHQL_URL = <string>process.env.NEXT_APP_GRAPHQL_URL
 
 export const getRecentArticles = async () => {
     const query = gql`

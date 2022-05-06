@@ -9,10 +9,7 @@ const Home: NextPage<HomePageProps> = ({articles}) => {
 
   return (
     <div>
-      <Layout sidebar={[
-        <p>Categories</p>,
-        <p>Recent posts</p>,
-      ]}>
+      <Layout>
         <ArticlesList articles={articles}/>
         {/* <div>
           {Array.from({length:100},(_,i) => <ArticleItem key={i} article={articles[0]}/>)}

@@ -8,6 +8,7 @@ const modalAnimation = keyframes`
 export const Modal = styled.div`
     position: fixed;
     inset: 0;
+    z-index: 99;
     background-color: #00000000;
     display: grid;
     place-items: center;
