@@ -59,3 +59,10 @@ export const Button = styled.button`
         height: 20px;
     }
 `;
+
+export const Empty = styled.h3`
+    font-size: 2rem;
+    font-weight: 600;
+    text-align: center;
+    margin-block: 5rem;
+`;

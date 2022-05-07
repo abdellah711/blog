@@ -8,16 +8,15 @@ import { IArticle } from 'types/article'
 const Home: NextPage<HomePageProps> = ({articles}) => {
 
   return (
-    <div>
       <Layout
+        title='Recent Articles'
         sidebars={[
-          <CategoriesSidebar/>,
-          <RecentPostsSidebar posts={articles}/>,
+          <CategoriesSidebar key="categories"/>,
+          <RecentPostsSidebar posts={articles} key="recent-posts"/>,
         ]}
       >
         <ArticlesList articles={articles}/>
       </Layout>
-    </div>
   )
 }
 

@@ -8,7 +8,6 @@ export const Card = styled.div`
     margin-block: 1rem;
     background-color: ${({ theme }) => theme.card.bg};;
     padding: 1rem;
-    min-width: 300px;
 
     h2{
         font-weight: 600;
