@@ -26,7 +26,7 @@ export const ListItem = styled.a`
     align-items: center;
     gap: 1rem;
     cursor: pointer;
-    padding: .2rem .5rem;
+    padding: .3rem .5rem;
     margin-top: .5rem;
     transition: .2s ease-in-out;
 

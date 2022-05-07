@@ -1,6 +1,6 @@
 import ArticlesList from 'components/ArticlesList'
-import ArticleItem from 'components/ArticlesList/ArticleItem'
 import Layout from 'components/Layout'
+import { CategoriesSidebar, RecentPostsSidebar } from 'components/Sidebar'
 import type { GetStaticProps, NextPage } from 'next'
 import { getRecentArticles } from 'services/articles'
 import { IArticle } from 'types/article'
@@ -9,11 +9,13 @@ const Home: NextPage<HomePageProps> = ({articles}) => {
 
   return (
     <div>
-      <Layout>
+      <Layout
+        sidebars={[
+          <CategoriesSidebar/>,
+          <RecentPostsSidebar posts={articles}/>,
+        ]}
+      >
         <ArticlesList articles={articles}/>
-        {/* <div>
-          {Array.from({length:100},(_,i) => <ArticleItem key={i} article={articles[0]}/>)}
-        </div> */}
       </Layout>
     </div>
   )

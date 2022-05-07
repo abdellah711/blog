@@ -5,15 +5,15 @@ import * as Styled from './styles'
 
 interface Props {
     children?: React.ReactNode;
+    sidebars: React.ReactNode[];
 }
 
-const Layout: FC<Props> = ({ children, }) => {
+const Layout: FC<Props> = ({ children, sidebars }) => {
     return (
         <Styled.Container>
             {children}
             <Styled.Aside>
-                <CategoriesSidebar/>
-                <RecentPostsSidebar/>
+                { sidebars }
             </Styled.Aside>
         </Styled.Container>
     )
