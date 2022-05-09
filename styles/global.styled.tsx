@@ -1,4 +1,4 @@
-import { createGlobalStyle } from 'styled-components';
+import styled, { createGlobalStyle } from 'styled-components';
 
 
 export const Global = createGlobalStyle`
@@ -43,3 +43,6 @@ export const Global = createGlobalStyle`
     }
 `;
 
+export const Container = styled.div`
+    padding-inline: var(--container-inline-pd);
+`;

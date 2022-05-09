@@ -1,6 +1,6 @@
 import { GRAPHQL_URL } from 'config/variables'
 import { gql, request } from 'graphql-request'
-import { IArticle } from 'types/article'
+import { IArticle, IArticleDetails } from 'types/article'
 
 
 export const getRecentArticles = async () => {
@@ -53,4 +53,47 @@ export const searchForArticles = async (searchQuery: string) => {
 
     const resp = await request<{ articles: IArticle[] }>(GRAPHQL_URL, query, { search: searchQuery })
     return resp.articles;
+}
+
+
+export const getArticleDetails = async (slug: string) => {
+    const query = gql`
+        query ($slug: String!){
+            article (where: {slug : $slug}){
+                title
+                slug
+                createdAt
+                content
+                
+                image {
+                    url
+                }
+
+                author {
+                    name
+                    createdAt
+                    photo {
+                        url
+                    }
+                }
+
+                categories {
+                    name
+                    slug
+                    image {
+                        url
+                    }
+                }
+
+                comments {
+                    name
+                    content
+                }
+            }
+        }
+    `
+
+    const resp = await request<{ article: IArticleDetails }>(GRAPHQL_URL, query, { slug })
+
+    return resp.article
 }

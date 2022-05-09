@@ -26,7 +26,6 @@ export const Image = styled.img`
     width: 15rem;
     aspect-ratio: 1;
     object-fit: cover;
-    grid-row: 3 span;
 `;
 
 export const Row = styled.div`
@@ -46,11 +45,15 @@ export const Column = styled.div`
 
 export const Button = styled.button`
     display: flex;
+    background-color: ${({ theme }) => theme.colors.primary};
+    color: ${({ theme }) => theme.colors.onPrimary};
+    font-size: 1rem;
+    padding: .7rem .8rem .7rem 1rem;
+    cursor: pointer;
     gap: .2rem;
-    padding-right: .8rem;
     border-radius: .7rem;
-    padding-top: .75rem;
     align-self: end;
+
     :hover svg{
         transform: translateX(4px);
     }
