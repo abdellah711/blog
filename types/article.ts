@@ -25,17 +25,18 @@ export interface IArticleDetails {
     author: {
         name: string;
         createdAt: string;
+        bio: string;
         photo: {
             url: string;
         }
-    }
+    };
     categories: {
         name: string;
         slug: string;
         image: {
             url: string;
         }
-    }
+    }[];
 
     comments: {
         name: string;

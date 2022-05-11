@@ -10,7 +10,7 @@ const ArticlePage: NextPage<ArticleProps> = ({ article }) => {
     console.log({article})
     return (
         <Container>
-            <ArticleContent />
+            <ArticleContent article={article}/>
         </Container>
     )
 }

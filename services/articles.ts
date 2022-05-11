@@ -71,6 +71,7 @@ export const getArticleDetails = async (slug: string) => {
 
                 author {
                     name
+                    bio
                     createdAt
                     photo {
                         url

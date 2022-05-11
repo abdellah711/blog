@@ -44,5 +44,11 @@ export const Global = createGlobalStyle`
 `;
 
 export const Container = styled.div`
-    padding-inline: var(--container-inline-pd);
+    max-width: calc(768px + 1rem);
+    margin-inline: auto;
+    padding-inline: 1rem;
+    @media screen and (max-width:950px){
+        padding-inline: var(--container-inline-pd);
+        max-width: 100%;
+    }
 `;
