@@ -15,7 +15,7 @@ export const LightTheme: DefaultTheme = {
         text: {
             display: '#111111',
             title: '#1e1e1e',
-            body: '#3c3c3c'
+            body: '#3e3e3e'
         }
     },
 }

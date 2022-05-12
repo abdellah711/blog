@@ -21,25 +21,27 @@ export const Title = styled.h1`
     margin-bottom: .2rem;
     `;
 
+
 export const Tags = styled.div`
     display: flex;
     flex-wrap: wrap;
     gap: .5rem;
     margin-top: .8rem;
     a{
-        border-radius: 120px;
-        border: 2px solid ${({ theme }) => theme.colors.primary};
+        border-radius: 7px;
         padding: .2rem .8rem;
-        color: ${({ theme }) => theme.colors.primary};
-        font-weight: 600;
         cursor: pointer;
         transition: .3s;
         font-size: .95rem;
         letter-spacing: .3px;
+        background-color: #00000015;
     }
-
+    a::before{
+        content: '#';
+        margin-right: 3px;
+    }
     a:hover{
-        background-color: ${({ theme }) => theme.colors.primary + '10'};
+        background-color: #00000020;
         transform: scale(.97);
     }
 `;
@@ -68,7 +70,8 @@ export const AuthorContainer = styled.div`
     display: grid;
     grid-template-columns: auto 1fr;
     grid-template-rows: repeat(2,auto);
-    column-gap: 1.2rem;
+    gap: .5rem 1.3rem;
+    padding-top: 1rem;
 
     h2 {
         font-weight: 500;
