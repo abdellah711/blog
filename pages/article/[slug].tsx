@@ -1,4 +1,4 @@
-import { ArticleContent } from "components/ArticleDetails"
+import { ArticleContent, Comments } from "components/ArticleDetails"
 import { GetServerSideProps, NextPage } from "next"
 import { getArticleDetails } from "services/articles"
 import { Container } from "styles/global.styled"
@@ -7,10 +7,10 @@ import { IArticleDetails } from "types/article"
 
 
 const ArticlePage: NextPage<ArticleProps> = ({ article }) => {
-    console.log({article})
     return (
         <Container>
             <ArticleContent article={article}/>
+            <Comments comments={article.comments} slug={article.slug}/>
         </Container>
     )
 }

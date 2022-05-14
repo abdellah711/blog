@@ -1,6 +1,6 @@
-import { GRAPHQL_URL } from 'config/variables'
-import { gql, request } from 'graphql-request'
-import { IArticle, IArticleDetails } from 'types/article'
+import { GRAPHQL_TOKEN, GRAPHQL_URL } from 'config/variables'
+import { gql, request, GraphQLClient } from 'graphql-request'
+import { IArticle, IArticleDetails, IComment } from 'types/article'
 
 
 export const getRecentArticles = async () => {
@@ -87,8 +87,10 @@ export const getArticleDetails = async (slug: string) => {
                 }
 
                 comments {
+                    id
                     name
                     content
+                    createdAt
                 }
             }
         }
@@ -97,4 +99,20 @@ export const getArticleDetails = async (slug: string) => {
     const resp = await request<{ article: IArticleDetails }>(GRAPHQL_URL, query, { slug })
 
     return resp.article
+}
+
+export const submitComment = async (comment: IComment & { slug: string }) => {
+    const query = gql`
+        mutation ($name: String!, $email: String!, $content: String!,$slug:String!) {
+            createComment(data: {name: $name, email:$email, content:$content,article:{connect: {slug:$slug}}}) {id}
+        }
+    `
+    const client = new GraphQLClient(GRAPHQL_URL, {
+        headers: {
+            authorization: `Bearer ${GRAPHQL_TOKEN}`
+        }
+    })
+
+    await client.request(query, comment)
+
 }

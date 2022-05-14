@@ -38,8 +38,13 @@ export interface IArticleDetails {
         }
     }[];
 
-    comments: {
-        name: string;
-        content: string;
-    }
+    comments: IComment[]
+}
+
+export interface IComment {
+    id?:string;
+    name: string;
+    content: string;
+    email?:string;
+    createdAt?: string;
 }

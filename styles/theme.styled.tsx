@@ -12,6 +12,12 @@ export const LightTheme: DefaultTheme = {
         onPrimary: '#fff',
         bg: '#fff',
         onBg: '#222222',
+        error: '#ff3232',
+        success: '#2dd02a',
+        input:{
+            bg: '#f5f5f5',
+            color: '#3f3f3f'
+        },
         text: {
             display: '#111111',
             title: '#1e1e1e',

@@ -11,7 +11,13 @@ declare module 'styled-components' {
             primary: string,
             onPrimary: string,
             bg: string,
+            success: string,
+            error: string,
             onBg: string,
+            input:{
+                bg: string;
+                color: string;
+            },
             text?: {
                 display: string,
                 title: string,
