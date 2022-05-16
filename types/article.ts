@@ -14,6 +14,17 @@ export interface IArticle {
     }
 }
 
+
+export interface IArticlesResponse {
+    articles: IArticle[];
+    recent: IArticle[];
+    articlesConnection: {
+        aggregate: {
+            count: number;
+        }
+    }
+}
+
 export interface IArticleDetails {
     title: string;
     content: string;

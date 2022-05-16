@@ -1,6 +1,6 @@
-import { GRAPHQL_TOKEN, GRAPHQL_URL } from 'config/variables'
+import { GRAPHQL_TOKEN, GRAPHQL_URL, PAGE_ARTICLES_COUNT } from 'config/variables'
 import { gql, request, GraphQLClient } from 'graphql-request'
-import { IArticle, IArticleDetails, IComment } from 'types/article'
+import { IArticle, IArticleDetails, IArticlesResponse, IComment } from 'types/article'
 
 
 export const getRecentArticles = async () => {
@@ -115,4 +115,52 @@ export const submitComment = async (comment: IComment & { slug: string }) => {
 
     await client.request(query, comment)
 
+}
+
+
+export const getPageArticles = async (page: number) => {
+    const skip = (page - 1) * PAGE_ARTICLES_COUNT
+    const query = gql`
+        query ($skip: Int!, $first: Int!){
+            articles (skip: $skip, first: $first) {
+                title
+                excerpt
+                slug
+                createdAt
+                image {
+                    url
+                }
+
+                author {
+                    name
+                    photo {
+                        url
+                    }
+                }
+            }
+            recent: articles (first: 7) {
+                title
+                excerpt
+                slug
+                createdAt
+                image {
+                    url
+                }
+
+                author {
+                    name
+                    photo {
+                        url
+                    }
+                }
+            }
+            articlesConnection{
+                aggregate {
+                    count
+                }
+            }
+        }
+    `
+    const resp = await request<IArticlesResponse>(GRAPHQL_URL, query, { skip, first: PAGE_ARTICLES_COUNT })
+    return resp
 }
