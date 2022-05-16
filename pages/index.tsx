@@ -1,5 +1,6 @@
 import ArticlesList from 'components/ArticlesList'
 import Layout from 'components/Layout'
+import Pagination from 'components/Pagination'
 import { CategoriesSidebar, RecentPostsSidebar } from 'components/Sidebar'
 import type { GetStaticProps, NextPage } from 'next'
 import { getRecentArticles } from 'services/articles'
@@ -16,6 +17,7 @@ const Home: NextPage<HomePageProps> = ({articles}) => {
         ]}
       >
         <ArticlesList articles={articles}/>
+        <Pagination currentPage={1} totalPages={10}/>
       </Layout>
   )
 }

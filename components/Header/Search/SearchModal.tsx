@@ -1,6 +1,6 @@
 import * as Styled from './styles'
 import SearchIcon from '../../../assets/icons/search.svg'
-import { ChangeEventHandler, EventHandler, FC, FormEventHandler, useState } from 'react'
+import { ChangeEventHandler, EventHandler, FC, FormEventHandler, useEffect, useRef, useState } from 'react'
 import { useRouter } from 'next/router'
 
 type Props = {
@@ -11,6 +11,12 @@ type Props = {
 const SearchModal: FC<Props> = ({ isOpen, onClose }) => {
     const router = useRouter()
     const [searchQuery, setSearchQuery] = useState('')
+    const searchInputRef = useRef<HTMLInputElement>(null)
+
+    useEffect(()=>{
+        isOpen && searchInputRef.current?.focus()
+    },[isOpen])
+
 
     const handleChange: ChangeEventHandler<HTMLInputElement> = e => setSearchQuery(e.target.value)
 
@@ -26,7 +32,7 @@ const SearchModal: FC<Props> = ({ isOpen, onClose }) => {
     return isOpen ? (
         <Styled.Modal onClick={e => e.target === e.currentTarget && onClose()}>
             <Styled.Dialog onSubmit={handleSubmit}>
-                <Styled.Input placeholder='Search...' value={searchQuery} onChange={handleChange} required/>
+                <Styled.Input ref={searchInputRef} placeholder='Search...' value={searchQuery} onChange={handleChange} required/>
                 <Styled.Submit>
                     <SearchIcon />
                 </Styled.Submit>
