@@ -5,7 +5,7 @@ import Pagination from './Pagination'
 describe('Pagination Component', () => {
 
     const setup = (currentPage = 1, totalPages = 10, count = 7) => {
-        return render(<Pagination totalPages={totalPages} count={count} currentPage={currentPage} />)
+        return render(<Pagination totalPages={totalPages} maxNumOfLinks={count} baseUrl="/page/" currentPage={currentPage} />)
     }
 
     it("should render noting if total page is one", () => {

@@ -3,10 +3,11 @@ import { gql, request, GraphQLClient } from 'graphql-request'
 import { IArticle, IArticleDetails, IArticlesResponse, IComment } from 'types/article'
 
 
-export const getRecentArticles = async () => {
+export const getPageArticles = async (page: number) => {
+    const skip = (page - 1) * PAGE_ARTICLES_COUNT
     const query = gql`
-        query {
-            articles {
+        query ($skip: Int!, $first: Int!){
+            articles (skip: $skip, first: $first) {
                 title
                 excerpt
                 slug
@@ -22,17 +23,39 @@ export const getRecentArticles = async () => {
                     }
                 }
             }
+            recent: articles (first: 7) {
+                title
+                excerpt
+                slug
+                createdAt
+                image {
+                    url
+                }
+
+                author {
+                    name
+                    photo {
+                        url
+                    }
+                }
+            }
+            articlesConnection{
+                aggregate {
+                    count
+                }
+            }
         }
     `
-
-    const resp = await request<{ articles: IArticle[] }>(GRAPHQL_URL, query)
-    return resp.articles;
+    const resp = await request<IArticlesResponse>(GRAPHQL_URL, query, { skip, first: PAGE_ARTICLES_COUNT })
+    return resp
 }
 
-export const searchForArticles = async (searchQuery: string) => {
+
+export const searchForArticles = async (searchQuery: string, page = 1) => {
+    const skip = (page - 1) * PAGE_ARTICLES_COUNT
     const query = gql`
-        query ($search: String!){
-            articles (where: {_search: $search}){
+        query ($search: String!,$first: Int!, $skip:Int!){
+            articles (where: {_search: $search}, skip:$skip, first:$first){
                 title
                 excerpt
                 slug
@@ -48,11 +71,34 @@ export const searchForArticles = async (searchQuery: string) => {
                     }
                 }
             }
+            recent: articles (first: 7) {
+                title
+                excerpt
+                slug
+                createdAt
+                image {
+                    url
+                }
+
+                author {
+                    name
+                    photo {
+                        url
+                    }
+                }
+            }
+
+            articlesConnection(where: {_search: $search}){
+                aggregate {
+                    count
+                }
+            }
+            
         }
     `
 
-    const resp = await request<{ articles: IArticle[] }>(GRAPHQL_URL, query, { search: searchQuery })
-    return resp.articles;
+    const resp = await request<IArticlesResponse>(GRAPHQL_URL, query, { search: searchQuery, skip, first: PAGE_ARTICLES_COUNT })
+    return resp
 }
 
 
@@ -115,52 +161,4 @@ export const submitComment = async (comment: IComment & { slug: string }) => {
 
     await client.request(query, comment)
 
-}
-
-
-export const getPageArticles = async (page: number) => {
-    const skip = (page - 1) * PAGE_ARTICLES_COUNT
-    const query = gql`
-        query ($skip: Int!, $first: Int!){
-            articles (skip: $skip, first: $first) {
-                title
-                excerpt
-                slug
-                createdAt
-                image {
-                    url
-                }
-
-                author {
-                    name
-                    photo {
-                        url
-                    }
-                }
-            }
-            recent: articles (first: 7) {
-                title
-                excerpt
-                slug
-                createdAt
-                image {
-                    url
-                }
-
-                author {
-                    name
-                    photo {
-                        url
-                    }
-                }
-            }
-            articlesConnection{
-                aggregate {
-                    count
-                }
-            }
-        }
-    `
-    const resp = await request<IArticlesResponse>(GRAPHQL_URL, query, { skip, first: PAGE_ARTICLES_COUNT })
-    return resp
 }

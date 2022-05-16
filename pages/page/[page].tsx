@@ -3,7 +3,7 @@ import ArticlesList from 'components/ArticlesList'
 import Layout from 'components/Layout'
 import Pagination from 'components/Pagination'
 import { CategoriesSidebar, RecentPostsSidebar } from 'components/Sidebar'
-import { getPageArticles, getRecentArticles } from 'services/articles'
+import { getPageArticles } from 'services/articles'
 import { IArticle } from 'types/article'
 import { PAGE_ARTICLES_COUNT } from "config/variables"
 
@@ -18,7 +18,7 @@ const BlogPage: NextPage<BlogPageProps> = ({ articles, recentArticles, currentPa
             ]}
         >
             <ArticlesList articles={articles} />
-            <Pagination currentPage={currentPage} totalPages={totalPages} />
+            <Pagination currentPage={currentPage} totalPages={totalPages} baseUrl="/page/"/>
         </Layout>
     )
 }
