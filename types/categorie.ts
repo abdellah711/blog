@@ -1,3 +1,4 @@
+import { IArticle } from "./article";
 
 export interface ICategorie {
     name: string;
@@ -5,4 +6,9 @@ export interface ICategorie {
     image: {
         url: string;
     }
+}
+
+export interface ICategorieResponse {
+    categories: ICategorie[];
+    recent: IArticle[];
 }

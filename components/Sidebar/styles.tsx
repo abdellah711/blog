@@ -30,7 +30,7 @@ export const ListItem = styled.a`
     transition: .2s ease-in-out;
 
     :hover{
-        background-color: #00000015;
+        background-color: #00000010;
         border-radius: .5rem;
     }
 

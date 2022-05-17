@@ -71,7 +71,7 @@ export const searchForArticles = async (searchQuery: string, page = 1) => {
                     }
                 }
             }
-            recent: articles (first: 7) {
+            recent: articles (first: 5) {
                 title
                 excerpt
                 slug
