@@ -45,7 +45,7 @@ interface Props {
 
 const Categorie: FC<Props> = ({ categorie }) => {
   return (
-    <Link href={`categorie/${categorie.slug}`} passHref>
+    <Link href={`/page/1?c=${categorie.slug}`} passHref>
       <Styled.ListItem>
         <img src={categorie.image.url} width="50" height="50" />
         <p>{categorie.name}</p>

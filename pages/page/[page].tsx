@@ -31,11 +31,12 @@ interface BlogPageProps {
 }
 
 export const getServerSideProps: GetServerSideProps<BlogPageProps> = async (ctx) => {
-    const page = ctx.query?.page
+    const page = ctx.params?.page
+    const categorie = ctx.query?.c
     if (!page || page === '0')
         return { redirect: { permanent: false, destination: '/404' } }
 
-    const { recent, articles, articlesConnection: { aggregate: { count } } } = await getPageArticles(+page)
+    const { recent, articles, articlesConnection: { aggregate: { count } } } = await getPageArticles(+page,categorie as string)
 
     return {
         props: {

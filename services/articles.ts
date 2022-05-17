@@ -3,11 +3,11 @@ import { gql, request, GraphQLClient } from 'graphql-request'
 import { IArticle, IArticleDetails, IArticlesResponse, IComment } from 'types/article'
 
 
-export const getPageArticles = async (page: number) => {
+export const getPageArticles = async (page: number, categorie?: string) => {
     const skip = (page - 1) * PAGE_ARTICLES_COUNT
     const query = gql`
         query ($skip: Int!, $first: Int!){
-            articles (skip: $skip, first: $first) {
+            articles (skip: $skip, first: $first ${categorie ? ',where:{categories_some:{slug:"' + categorie + '"}}' : ''}) {
                 title
                 excerpt
                 slug
@@ -39,7 +39,7 @@ export const getPageArticles = async (page: number) => {
                     }
                 }
             }
-            articlesConnection{
+            articlesConnection(${categorie ? 'where:{categories_some:{slug:"' + categorie + '"}}' : ''}){
                 aggregate {
                     count
                 }
