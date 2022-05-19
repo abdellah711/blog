@@ -19,6 +19,19 @@ export const Card = styled.div`
     h3{
         font-weight: 600;
     }
+
+    p {
+        display: -webkit-box !important;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        -webkit-line-clamp: 5;
+        -webkit-box-orient: vertical;
+    }
+
+    @media screen and (max-width: 700px) {
+        grid-template-columns: 1fr;
+        padding-block: 1.3rem;
+    }
 `;
 
 export const Image = styled.img`
@@ -26,13 +39,18 @@ export const Image = styled.img`
     width: 15rem;
     aspect-ratio: 1;
     object-fit: cover;
+
+    @media screen and (max-width: 700px) {
+        width: 100%;
+        aspect-ratio: 3/2;
+    }
 `;
 
 export const Row = styled.div`
     display: flex;
     gap: 1rem;
     align-items: center;
-
+    padding-top: .2rem;
     img{
         border-radius: 50%;
         object-fit: cover;
@@ -53,6 +71,7 @@ export const Button = styled.button`
     gap: .2rem;
     border-radius: .7rem;
     align-self: end;
+    white-space: nowrap;
 
     :hover svg{
         transform: translateX(4px);
@@ -60,6 +79,9 @@ export const Button = styled.button`
     svg{
         transition: transform .3s;
         height: 20px;
+    }
+    span{
+        margin-top: -1px;
     }
 `;
 

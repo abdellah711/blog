@@ -32,6 +32,12 @@ export const CommentForm = styled.form`
     button{
         padding: .5rem 1rem;
     }
+
+    @media screen and (max-width: 700px) {
+        button{
+            padding-block: .9rem;
+        }
+    }
 `;
 
 export const Row = styled.div`
@@ -41,6 +47,10 @@ export const Row = styled.div`
     gap: 1rem;
     > input {
         flex: 1;
+    }
+    @media screen and (max-width: 700px) {
+        flex-direction: column;
+        align-items: stretch;
     }
 `;
 

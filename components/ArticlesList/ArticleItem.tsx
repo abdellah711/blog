@@ -22,7 +22,9 @@ const ArticleItem: FC<Props> = ({ article }) => {
                     <h2>{article.title}</h2>
                 </a>
             </Link>
-            <p>{article.excerpt}</p>
+            <div>
+                <p>{article.excerpt}</p>
+            </div>
             <Styled.Row>
                 <img src={article.author.photo.url} width='50' height='50' />
                 <Styled.Column>
@@ -30,7 +32,7 @@ const ArticleItem: FC<Props> = ({ article }) => {
                     <p>{Intl.DateTimeFormat('en', { dateStyle: 'long' }).format(new Date(article.createdAt))}</p>
                 </Styled.Column>
                 <Link href={articleLink} passHref>
-                    <Styled.Button as="a">Read more <ArrowIcon /></Styled.Button>
+                    <Styled.Button as="a"><span>Read more</span> <ArrowIcon /></Styled.Button>
                 </Link>
             </Styled.Row>
         </Styled.Card>
