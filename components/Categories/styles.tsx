@@ -17,7 +17,8 @@ export const Item = styled.a`
     transition: .3s;
     :hover{
         transform: scale(1.03);
-        background-color: #00000009;
+        box-shadow: ${({ theme }) => theme.card.shadowHover};;
+        /* background-color: #00000009; */
     }
     
     :active{

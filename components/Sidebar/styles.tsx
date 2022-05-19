@@ -47,3 +47,17 @@ export const ListItem = styled.a`
     }
 `;
 
+export const ShowMore = styled.a`
+    text-align: center;
+    display: block;
+    margin-top: .5rem;
+    padding: .5em;
+    border-radius: .5rem;
+    color: #22aaf3e2;
+    cursor: pointer;
+    transition: .3s;
+    font-size: 1.05rem;
+    :hover{
+        background-color: #22aaf320;
+    }
+`;

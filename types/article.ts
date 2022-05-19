@@ -1,3 +1,5 @@
+import { ICategorie } from "./categorie";
+
 export interface IArticle {
     title: string;
     excerpt: string;
@@ -18,6 +20,7 @@ export interface IArticle {
 export interface IArticlesResponse {
     articles: IArticle[];
     recent: IArticle[];
+    categories: ICategorie[];
     articlesConnection: {
         aggregate: {
             count: number;

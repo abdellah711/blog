@@ -1,49 +1,37 @@
-import Image from 'next/image'
-import { FC, useEffect, useState } from 'react'
-import { getCategories } from 'services/categories'
 import { ICategorie } from 'types/categorie'
 import * as Styled from './styles'
 import Link from 'next/link'
-import { ProgressBar, ProgressContainer } from 'styles/progress.styled'
+import { CATEGORIES_SIDEBAR_COUNT } from 'config/variables'
+import { FC } from 'react'
 
-const Categories = () => {
-  const [categories, setCategories] = useState<ICategorie[] | null>(null)
+interface Props {
+  categories: ICategorie[];
+}
 
-  useEffect(() => {
-    (async () => {
-      const categories = await getCategories()
-      setCategories(categories)
-    })()
-
-  }, [])
+const Categories: FC<Props> = ({ categories }) => {
 
   return (
     <Styled.Card>
       <h2>Categories</h2>
 
-      {categories ? (
-        <ul>
-          {categories.map(categorie => (<Categorie key={categorie.slug} categorie={categorie} />))}
-        </ul>
-      )
-        : (
+      <ul>
+        {categories.map(categorie => (<Categorie key={categorie.slug} categorie={categorie} />))}
 
-          <ProgressContainer>
-            <ProgressBar />
-          </ProgressContainer>
-        )
-      }
+        {
+          categories.length === CATEGORIES_SIDEBAR_COUNT &&
+          <Link href="/categories/">
+            <Styled.ShowMore>Show more</Styled.ShowMore>
+          </Link>
+        }
+      </ul>
     </Styled.Card>
   )
 }
 
 
 
-interface Props {
-  categorie: ICategorie;
-}
 
-const Categorie: FC<Props> = ({ categorie }) => {
+const Categorie: FC<{ categorie: ICategorie }> = ({ categorie }) => {
   return (
     <Link href={`/page/1?c=${categorie.slug}`} passHref>
       <Styled.ListItem>

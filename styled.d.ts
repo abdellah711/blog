@@ -4,6 +4,7 @@ declare module 'styled-components' {
     export interface DefaultTheme {
         card: {
             shadow: string;
+            shadowHover?: string;
             borderRadius: string;
             bg: string;
         },

@@ -5,6 +5,7 @@ export const LightTheme: DefaultTheme = {
     card: {
         borderRadius: '12px',
         shadow: '0 4px 6px -1px rgb(0 0 0 / 0.1), 0 0 9px -2px rgb(0 0 0 / 0.1)',
+        shadowHover: '2px 5px 25px -5px rgb(0 0 0 / 10%), 6px 8px 10px -6px rgb(0 0 0 / 10%)',
         bg: '#fff',
     },
     colors: {

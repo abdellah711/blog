@@ -6,14 +6,15 @@ import { CategoriesSidebar, RecentPostsSidebar } from 'components/Sidebar'
 import { getPageArticles } from 'services/articles'
 import { IArticle } from 'types/article'
 import { PAGE_ARTICLES_COUNT } from "config/variables"
+import { ICategorie } from "types/categorie"
 
 
-const BlogPage: NextPage<BlogPageProps> = ({ articles, recentArticles, currentPage, totalPages }) => {
+const BlogPage: NextPage<BlogPageProps> = ({ articles, recentArticles,categories, currentPage, totalPages }) => {
     return (
         <Layout
             title='Recent Articles'
             sidebars={[
-                <CategoriesSidebar key="categories" />,
+                <CategoriesSidebar key="categories" categories={categories}/>,
                 <RecentPostsSidebar posts={recentArticles} key="recent-posts" />,
             ]}
         >
@@ -28,6 +29,7 @@ interface BlogPageProps {
     currentPage: number;
     totalPages: number;
     recentArticles: IArticle[];
+    categories: ICategorie[];
 }
 
 export const getServerSideProps: GetServerSideProps<BlogPageProps> = async (ctx) => {
@@ -36,14 +38,15 @@ export const getServerSideProps: GetServerSideProps<BlogPageProps> = async (ctx)
     if (!page || page === '0')
         return { redirect: { permanent: false, destination: '/404' } }
 
-    const { recent, articles, articlesConnection: { aggregate: { count } } } = await getPageArticles(+page,categorie as string)
+    const { recent, articles,categories, articlesConnection: { aggregate: { count } } } = await getPageArticles(+page,categorie as string)
 
     return {
         props: {
             articles,
             currentPage: +page,
             recentArticles: recent,
-            totalPages: Math.ceil(count / PAGE_ARTICLES_COUNT)
+            totalPages: Math.ceil(count / PAGE_ARTICLES_COUNT),
+            categories 
         }
     }
 }

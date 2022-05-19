@@ -7,16 +7,17 @@ import { GetServerSideProps, NextPage } from 'next'
 import React from 'react'
 import { searchForArticles } from 'services/articles'
 import { IArticle } from 'types/article'
+import { ICategorie } from 'types/categorie'
 
 
 
-const SearchPage: NextPage<SearchProps> = ({ articles, searchQuery, recentArticles, currentPage, totalPages }) => {
+const SearchPage: NextPage<SearchProps> = ({ articles,categories, searchQuery, recentArticles, currentPage, totalPages }) => {
 
     return (
         <Layout
             title={`Result of ' ${searchQuery} '`}
             sidebars={[
-                <CategoriesSidebar key="categories" />,
+                <CategoriesSidebar key="categories" categories={categories}/>,
                 <RecentPostsSidebar posts={recentArticles} key="recent-posts" />,
             ]}
         >
@@ -29,6 +30,7 @@ const SearchPage: NextPage<SearchProps> = ({ articles, searchQuery, recentArticl
 interface SearchProps {
     articles: IArticle[];
     recentArticles: IArticle[];
+    categories: ICategorie[];
     searchQuery: string;
     totalPages: number;
     currentPage: number;
@@ -40,7 +42,7 @@ export const getServerSideProps: GetServerSideProps<SearchProps> = async (contex
     if (!query)
         return { redirect: { permanent: false, destination: '/404' } }
 
-    const { articles, recent, articlesConnection: { aggregate: { count } } } = await searchForArticles(query as string, page)
+    const { articles, recent,categories, articlesConnection: { aggregate: { count } } } = await searchForArticles(query as string, page)
     return {
         props: {
             articles,
@@ -48,6 +50,7 @@ export const getServerSideProps: GetServerSideProps<SearchProps> = async (contex
             searchQuery: query as string,
             totalPages: Math.ceil(count / PAGE_ARTICLES_COUNT),
             currentPage: page,
+            categories
         },
     }
 }
