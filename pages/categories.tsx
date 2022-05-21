@@ -12,7 +12,7 @@ const categories: NextPage<CategoriesPageProps> = ({ recentArticles, categories 
         <Layout
             title="Categories"
             sidebars={[
-                <RecentPosts posts={recentArticles} />
+                <RecentPosts posts={recentArticles} key="recent-posts"/>
             ]}
         >
             <CategoriesList categories={categories}/>

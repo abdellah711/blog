@@ -22,7 +22,7 @@ const RecentPosts: FC<Props> = ({ posts }) => {
 
 const Post: FC<{ post: IArticle }> = ({ post }) => {
   return (
-    <Link href={`article/${post.slug}`} passHref>
+    <Link href={`/article/${post.slug}`} passHref>
       <Styled.ListItem>
         <img src={post.image.url} style={{ borderRadius: 12, padding: 0 }} width="50" height={50} />
         <p>{post.title}</p>
