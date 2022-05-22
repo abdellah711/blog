@@ -17,6 +17,7 @@ declare module 'styled-components' {
             onBg: string,
             input:{
                 bg: string;
+                placeholderColor: string;
                 color: string;
             },
             text?: {

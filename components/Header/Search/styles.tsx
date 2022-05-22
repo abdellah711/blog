@@ -51,5 +51,7 @@ export const Submit = styled.button`
 
     svg{
         width: 27px;
+        stroke: #2f2f2f;
+        stroke-width: 2px;
     }
 `;

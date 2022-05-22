@@ -1,4 +1,4 @@
-import React, { ButtonHTMLAttributes, FC, HTMLAttributes } from 'react'
+import React, { FC, HTMLAttributes } from 'react'
 import styled from 'styled-components';
 
 type Props = HTMLAttributes<HTMLElement> & {
@@ -19,9 +19,13 @@ const StyledIcon = styled.div`
     width: var(--size);
     height: var(--size);
     padding: .5rem;
-    background-color: #00000020;
+    background-color: ${({ theme }) => theme.colors.text?.display}20;
     border-radius: 12px;
     cursor: pointer;
+    svg{
+        stroke: ${({ theme }) => theme.colors.text?.display};;
+        stroke-width: 1.5px;
+    }
 `;
 
 export default NavIcon

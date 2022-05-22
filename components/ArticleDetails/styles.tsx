@@ -34,14 +34,15 @@ export const Tags = styled.div`
         transition: .3s;
         font-size: .95rem;
         letter-spacing: .3px;
-        background-color: #00000015;
+        color: ${({ theme }) => theme.colors.text?.display}f0;
+        background-color: ${({ theme }) => theme.colors.text?.display}20;
     }
     a::before{
         content: '#';
         margin-right: 3px;
     }
     a:hover{
-        background-color: #00000020;
+        background-color: ${({ theme }) => theme.colors.text?.display}25;
         transform: scale(.97);
     }
 `;

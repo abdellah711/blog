@@ -15,10 +15,11 @@ export const Item = styled.a`
     align-items: center;
     gap: 1.5rem;
     transition: .3s;
+    background-color: ${({ theme }) => theme.card.bg};;
     :hover{
         transform: scale(1.03);
         box-shadow: ${({ theme }) => theme.card.shadowHover};;
-        /* background-color: #00000009; */
+        background-color: ${({ theme }) => theme.card.bg}e0;
     }
     
     :active{

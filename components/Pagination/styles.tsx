@@ -12,7 +12,7 @@ export const PaginationContainer = styled.div`
         width: 80%;
         height: 1px;
         top: 0;
-        background-color: #00000020;
+        background-color: ${({ theme }) => theme.colors.text?.display}20;
         position: absolute;
         margin-top: -1rem;
     }

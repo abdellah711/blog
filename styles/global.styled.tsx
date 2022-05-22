@@ -16,11 +16,14 @@ export const Global = createGlobalStyle`
         margin: 0;
         padding: 0;
         box-sizing: border-box;
+        transition: background-color .3s, color .3s;
     }
 
     body{
         min-height: 100vh;
         font-family: 'Nunito', sans-serif;
+        background-color: ${({ theme }) => theme.colors.bg};
+        accent-color: ${({ theme }) => theme.colors.primary};;
     }
 
     a {
@@ -38,8 +41,12 @@ export const Global = createGlobalStyle`
         cursor: pointer;
     }
 
-    p{
+    p,label{
         color: ${({ theme }) => theme.colors.text?.body};
+    }
+
+    h1,h2,h3,h4{
+        color: ${({ theme }) => theme.colors.text?.display};
     }
 `;
 

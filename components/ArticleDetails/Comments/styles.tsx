@@ -14,14 +14,18 @@ export const CommentForm = styled.form`
     input[type="text"] ,input[type="email"] , textarea{
         background-color: ${({ theme }) => theme.colors.input.bg};;
         border: none;
-        outline-color: ${({ theme }) => theme.colors.primary};
         border-radius: .5em;
         padding: .9em;
         font-size: 1rem;
         font-family: inherit;
+        color: ${({ theme }) => theme.colors.input.color};
         ::placeholder{
             text-transform: capitalize;
-            color: ${({ theme }) => theme.colors.input.color};
+            color: ${({ theme }) => theme.colors.input.placeholderColor};
+        }
+
+        :focus-visible{
+            outline: 2px solid ${({ theme }) => theme.colors.primary};
         }
     }
 

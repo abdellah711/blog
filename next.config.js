@@ -2,7 +2,7 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ["media.graphassets.com"]
+    domains: ["media.graphassets.com"],
   },
   async rewrites(){
     return [
@@ -16,6 +16,7 @@ const nextConfig = {
       },
     ]
   }
+
 }
 
 module.exports = nextConfig

@@ -11,7 +11,7 @@ export const Card = styled.div`
 
     h2{
         font-weight: 600;
-        border-bottom: 1px solid #00000030;
+        border-bottom: 1px solid ${({ theme }) => theme.colors.text?.display}30;
         padding-bottom: .5rem;
     }
 `;
@@ -30,7 +30,7 @@ export const ListItem = styled.a`
     transition: .2s ease-in-out;
 
     :hover{
-        background-color: #00000010;
+        background-color: ${({ theme }) => theme.colors.text?.display}10;
         border-radius: .5rem;
     }
 
@@ -40,7 +40,7 @@ export const ListItem = styled.a`
     }
 
     img{
-        background-color: ${({ theme }) => theme.colors.bg};;
+        background-color: #fff;
         border-radius: 50%;
         object-fit: cover;
         padding: .2rem;
