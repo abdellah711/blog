@@ -1,3 +1,4 @@
+import Footer from 'components/Footer'
 import { SwitchThemeProvider } from 'context/switch-theme'
 import type { AppProps } from 'next/app'
 import Header from '../components/Header'
@@ -9,6 +10,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       <Global />
       <Header />
       <Component {...pageProps} />
+      <Footer/>
     </SwitchThemeProvider>
   )
 }

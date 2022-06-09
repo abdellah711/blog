@@ -18,6 +18,7 @@ export const LightTheme = {
         '--card-bg': '#ffffff',
         '--color-icon-bg': '#11111120',
         '--color-gray-100': '#99999925',
+        '--color-footer-bg': '#394C68',
     }
     export const DarkTheme = {
         '--color-primary': '#0E9CD9',
@@ -38,4 +39,5 @@ export const LightTheme = {
         '--card-bg': '#333333',
         '--color-icon-bg': '#333333',
         '--color-gray-100': '#ffffff25',
+        '--color-footer-bg': '#1a232f',
 }
