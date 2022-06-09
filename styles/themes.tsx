@@ -28,7 +28,7 @@ export const LightTheme = {
         '--color-error': '#ff3232',
         '--color-success': '#2dd02a',
         '--color-input-bg': '#3f3f3f',
-        '--color-input-placeholderColor': '#e0e0e0',
+        '--color-input-placeholderColor': '#b6b6b6',
         '--color-input-color': '#fafafa',
         '--color-text-display': '#ffffff',
         '--color-text-title': '#fafafa',

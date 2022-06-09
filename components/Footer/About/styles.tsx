@@ -4,10 +4,6 @@ export const Container = styled.div`
     display: flex;
     flex-direction: column;
     gap: 2rem;
-
-    p{
-        max-width: 45ch;
-    }
 `;
 
 export const SocialMediaContainer = styled.div`

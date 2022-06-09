@@ -1,4 +1,3 @@
-import React from 'react'
 import * as Styled from './styles'
 import { Logo } from 'components/Header'
 import GithubIcon from '../../../assets/icons/github.svg'
