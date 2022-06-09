@@ -8,18 +8,17 @@ export const Grid = styled.div`
 `;
 
 export const Item = styled.a`
-    box-shadow: ${({ theme }) => theme.card.shadow};;
+    box-shadow: var(--card-shadow);
     padding: .8rem;
     border-radius: 1rem;
     display: flex;
     align-items: center;
     gap: 1.5rem;
     transition: .3s;
-    background-color: ${({ theme }) => theme.card.bg};;
+    background-color: var(--card-bg);;
     :hover{
         transform: scale(1.03);
-        box-shadow: ${({ theme }) => theme.card.shadowHover};;
-        background-color: ${({ theme }) => theme.card.bg}e0;
+        box-shadow: var(--card-shadowHover);
     }
     
     :active{

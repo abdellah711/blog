@@ -19,11 +19,11 @@ const StyledIcon = styled.div`
     width: var(--size);
     height: var(--size);
     padding: .5rem;
-    background-color: ${({ theme }) => theme.colors.text?.display}20;
+    background-color: var(--color-icon-bg);
     border-radius: 12px;
     cursor: pointer;
     svg{
-        stroke: ${({ theme }) => theme.colors.text?.display};;
+        stroke: var(--color-text-display);
         stroke-width: 1.5px;
     }
 `;

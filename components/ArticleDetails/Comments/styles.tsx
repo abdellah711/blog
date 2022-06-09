@@ -12,20 +12,20 @@ export const CommentForm = styled.form`
     }
 
     input[type="text"] ,input[type="email"] , textarea{
-        background-color: ${({ theme }) => theme.colors.input.bg};;
+        background-color: var(--color-input-bg);;
         border: none;
         border-radius: .5em;
         padding: .9em;
         font-size: 1rem;
         font-family: inherit;
-        color: ${({ theme }) => theme.colors.input.color};
+        color: var(--color-input-color);
         ::placeholder{
             text-transform: capitalize;
-            color: ${({ theme }) => theme.colors.input.placeholderColor};
+            color: var(--color-input-placeholderColor);
         }
 
         :focus-visible{
-            outline: 2px solid ${({ theme }) => theme.colors.primary};
+            outline: 2px solid var(--color-primary);
         }
     }
 
@@ -76,7 +76,7 @@ export const CommentContainer = styled.div`
         font-size: 1.1rem;
         span {
             font-size: .9rem;
-            color: ${({ theme }) => theme.colors.text?.body};
+            color: var(--color-text-body);
         }
     }
 
@@ -105,5 +105,5 @@ export const EmptyView = styled.p`
 `;
 
 export const Message = styled.p<{ error?: boolean }>`
-    color: ${({ theme, error }) => theme.colors[error ? 'error' : 'success']};
+    color: ${({ error }) => `var(--color-${error ? 'error' : 'success'})`};
 `;

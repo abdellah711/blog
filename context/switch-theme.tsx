@@ -1,6 +1,6 @@
 import { useContext, createContext, useState, FC, ReactNode, useEffect } from "react";
-import { ThemeProvider } from "styled-components";
-import { DarkTheme, LightTheme } from "styles/theme.styled";
+import { DarkTheme, LightTheme } from "styles/themes";
+
 
 const context = createContext({ isDark: true, switchTheme: () => console.log("ThemeContext::switchTheme") })
 
@@ -10,7 +10,7 @@ export const useSwitchTheme = () => {
 }
 
 export const SwitchThemeProvider: FC<{ children?: ReactNode }> = ({ children }) => {
-    const [theme, setTheme] = useState(LightTheme)
+    const [isDark, setIsDark] = useState(false)
 
     useEffect(() => {
         let isDarkTheme: string | null | boolean = localStorage.getItem('dark-theme')
@@ -19,20 +19,21 @@ export const SwitchThemeProvider: FC<{ children?: ReactNode }> = ({ children }) 
         } else {
             isDarkTheme = JSON.parse(isDarkTheme)
         }
-        setTheme(isDarkTheme ? DarkTheme : LightTheme)
+        setIsDark(isDarkTheme as boolean)
     }, [])
 
     const switchTheme = () => {
-        localStorage.setItem('dark-theme',JSON.stringify(theme === LightTheme))
-        setTheme(theme === LightTheme ? DarkTheme : LightTheme)
+        localStorage.setItem('dark-theme', JSON.stringify(!isDark))
+        const root = document.documentElement
+        for (let [key, value] of Object.entries(!isDark ? DarkTheme : LightTheme)) {
+            root.style.setProperty(key, value)
+        }
+        setIsDark(dark => !dark)
     }
-    const isDark = theme === DarkTheme
 
     return (
         <context.Provider value={{ isDark, switchTheme }} >
-            <ThemeProvider theme={theme}>
-                {children}
-            </ThemeProvider >
+            {children}
         </context.Provider >
     )
 }

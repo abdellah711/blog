@@ -29,7 +29,7 @@ const ArticleItem: FC<Props> = ({ article }) => {
                 <img src={article.author.photo.url} width='50' height='50' />
                 <Styled.Column>
                     <h3>{article.author.name}</h3>
-                    <p>{Intl.DateTimeFormat('en', { dateStyle: 'long' }).format(new Date(article.createdAt))}</p>
+                    <p style={{whiteSpace:'nowrap'}}>{Intl.DateTimeFormat('en', { dateStyle: 'long' }).format(new Date(article.createdAt))}</p>
                 </Styled.Column>
                 <Link href={articleLink} passHref>
                     <Styled.Button as="a"><span>Read more</span> <ArrowIcon /></Styled.Button>

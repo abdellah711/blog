@@ -12,20 +12,20 @@ export const PaginationContainer = styled.div`
         width: 80%;
         height: 1px;
         top: 0;
-        background-color: ${({ theme }) => theme.colors.text?.display}20;
+        background-color: var(--color-icon-bg);
         position: absolute;
         margin-top: -1rem;
     }
 `;
 
 export const Link = styled.a<{ active?: boolean }>`
-    color: ${({ theme, active }) => theme.colors?.text?.[active ? 'display' : 'body'] + (active ? '':'d9')};
+    color: ${({ active }) => `var(--color-text-${active ? 'body' : 'caution'})`};
     padding: .5rem;
     text-transform: capitalize;
     transition: .3s;
     :hover{
         border-radius: 4px;
-        background-color: ${({ theme }) => theme.colors?.text?.body+'10'};;
+        background-color: var(--color-gray-100);
         transform: ${({ active }) => active ? '':'translateY(-3px) scale(1.05)'};
     }
 
@@ -37,6 +37,6 @@ export const Link = styled.a<{ active?: boolean }>`
         margin-top: -1rem;
         width: 2rem;
         height: 1.2px;
-        background-color: ${({ theme }) => theme.colors?.text?.display};;
+        background-color: var(--color-text-display);
     }
 `;

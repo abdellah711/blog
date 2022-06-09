@@ -2,10 +2,28 @@ import styled, { createGlobalStyle } from 'styled-components';
 
 
 export const Global = createGlobalStyle`
-    :root{
-        --container-inline-pd: 10vw; 
+    body{
+        --container-inline-pd: 10vw;
+        --card-borderRadius: 12px;
     }
-    
+    body.ddark{
+        --color-primary: #0E9CD9;
+        --color-onPrimary: #ffffff;
+        --color-bg: #181818;
+        --color-onBg: #fafafa;
+        --color-error: #ff3232;
+        --color-success: #2dd02a;
+        --color-input-bg: #3f3f3f;
+        --color-input-placeholderColor: #e0e0e0;
+        --color-input-color: #fafafa;
+        --color-text-display: #ffffff;
+        --color-text-title: #fafafa;
+        --color-text-body: #e9e9e9;
+        --card-shadow: none;
+        --card-shadowHover: none;
+        --card-bg: #333333;
+    }
+
     @media screen and (max-width:768px){
         :root{
             --container-inline-pd: 5vw; 
@@ -22,8 +40,8 @@ export const Global = createGlobalStyle`
     body{
         min-height: 100vh;
         font-family: 'Nunito', sans-serif;
-        background-color: ${({ theme }) => theme.colors.bg};
-        accent-color: ${({ theme }) => theme.colors.primary};;
+        background-color: var(--color-bg);
+        accent-color: var(--color-primary);
     }
 
     a {
@@ -32,8 +50,8 @@ export const Global = createGlobalStyle`
     }
 
     button {
-        background-color: ${({ theme }) => theme.colors.primary};
-        color: ${({ theme }) => theme.colors.onPrimary};
+        background-color: var(--color-primary);
+        color: var(--color-onPrimary);
         border-radius: .3rem;
         border: none;
         font-size: 1rem;
@@ -42,11 +60,11 @@ export const Global = createGlobalStyle`
     }
 
     p,label{
-        color: ${({ theme }) => theme.colors.text?.body};
+        color: var(--color-text-body);
     }
 
     h1,h2,h3,h4{
-        color: ${({ theme }) => theme.colors.text?.display};
+        color: var(--color-text-display);
     }
 `;
 

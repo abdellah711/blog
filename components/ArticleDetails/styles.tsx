@@ -17,7 +17,7 @@ export const MainImg = styled.img`
 
 export const Title = styled.h1`
     font-size: 2.5rem;
-    color: ${({ theme }) => theme.colors.text?.title};
+    color: var(--color-text-title);
     margin-bottom: .2rem;
     `;
 
@@ -34,16 +34,16 @@ export const Tags = styled.div`
         transition: .3s;
         font-size: .95rem;
         letter-spacing: .3px;
-        color: ${({ theme }) => theme.colors.text?.display}f0;
-        background-color: ${({ theme }) => theme.colors.text?.display}20;
+        color: var(--color-text-body);
+        background-color: var(--color-gray-100);
     }
     a::before{
         content: '#';
         margin-right: 3px;
     }
     a:hover{
-        background-color: ${({ theme }) => theme.colors.text?.display}25;
         transform: scale(.97);
+        filter: brightness(.85);
     }
 `;
 
@@ -76,10 +76,10 @@ export const AuthorContainer = styled.div`
 
     h2 {
         font-weight: 500;
-        color: ${({ theme }) => theme.colors.text?.display};
+        color: var(--color-text-display);
         span {
             font-size: 1rem;
-            color: ${({ theme }) => theme.colors.text?.body};
+            color: var(--color-text-body);
         }
         span::before {
             content: '-';
@@ -88,7 +88,7 @@ export const AuthorContainer = styled.div`
     }
 
     p {
-        color: ${({ theme }) => theme.colors.text?.body};
+        color: var(--color-text-body);
     }
 `;
 

@@ -6,14 +6,14 @@ export const Card = styled.div`
     grid-template-rows: auto 1fr auto;
     padding: 1rem;
     gap: 1rem;
-    box-shadow: ${({ theme }) => theme.card.shadow};;
+    box-shadow: var(--card-shadow);
     overflow: hidden;
-    border-radius: ${({ theme }) => theme.card.borderRadius};;
+    border-radius: var(--card-borderRadius);
     margin-block: 1rem;
-    background-color: ${({ theme }) => theme.card.bg};;
+    background-color: var(--card-bg);;
     
     h2{
-        color: ${({ theme }) => theme.colors.text?.title};
+        color: var(--color-text-title);
     }
 
     h3{
@@ -35,7 +35,7 @@ export const Card = styled.div`
 `;
 
 export const Image = styled.img`
-    border-radius: ${({ theme }) => theme.card.borderRadius};;
+    border-radius: var(--card-borderRadius);
     width: 15rem;
     aspect-ratio: 1;
     object-fit: cover;
@@ -63,8 +63,8 @@ export const Column = styled.div`
 
 export const Button = styled.button`
     display: flex;
-    background-color: ${({ theme }) => theme.colors.primary};
-    color: ${({ theme }) => theme.colors.onPrimary};
+    background-color: var(--color-primary);
+    color: var(--color-onPrimary);
     font-size: 1rem;
     padding: .7rem .8rem .7rem 1rem;
     cursor: pointer;

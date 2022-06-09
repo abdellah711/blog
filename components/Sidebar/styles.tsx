@@ -2,16 +2,16 @@ import styled from 'styled-components';
 
 
 export const Card = styled.div`
-    box-shadow: ${({ theme }) => theme.card.shadow};;
+    box-shadow: var(--card-shadow);
     overflow: hidden;
-    border-radius: ${({ theme }) => theme.card.borderRadius};;
-    margin-block: 1rem;
-    background-color: ${({ theme }) => theme.card.bg};;
+    border-radius: var(--card-borderRadius);
+    margin-block: 1rem 1.5rem;
+    background-color: var(--card-bg);;
     padding: 1rem;
 
     h2{
         font-weight: 600;
-        border-bottom: 1px solid ${({ theme }) => theme.colors.text?.display}30;
+        border-bottom: 1px solid var(--color-gray-100);
         padding-bottom: .5rem;
     }
 `;
@@ -30,13 +30,13 @@ export const ListItem = styled.a`
     transition: .2s ease-in-out;
 
     :hover{
-        background-color: ${({ theme }) => theme.colors.text?.display}10;
+        background-color: var(--color-gray-100);
         border-radius: .5rem;
     }
 
     p{
         font-weight: 600;
-        color: ${({ theme }) => theme.colors.text?.body};
+        color: var(--color-text-body);
     }
 
     img{

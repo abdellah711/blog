@@ -22,7 +22,7 @@ const Container = styled.a`
     cursor: pointer;
 
     h1 {
-      color: ${({ theme }) => theme.colors.text?.display};
+      color: var(--color-text-display);
       font-weight: 400;
     }
 `;

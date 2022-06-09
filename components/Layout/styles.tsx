@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
     display: flex;
-    gap: 1rem;
+    gap: 1.5rem;
     padding-inline: var(--container-inline-pd);
     flex-wrap: wrap;
     padding-top: 1.5rem;
