@@ -29,7 +29,7 @@ const ArticleContent: FC<Props> = ({ article }) => {
 
             <div>
                 <Styled.Tags>
-                    {article.categories.map(categorie => (<Link key={categorie.slug} href={`/categorie/${categorie.slug}`}><a>{categorie.name}</a></Link>))}
+                    {article.categories.map(categorie => (<Link key={categorie.slug} href={`/?c=${categorie.slug}`}><a>{categorie.name}</a></Link>))}
                 </Styled.Tags>
             </div>
 

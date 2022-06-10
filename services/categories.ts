@@ -1,9 +1,9 @@
+import { GRAPHQL_URL } from "config/variables";
 import { gql, request } from "graphql-request";
 import { IArticlesResponse } from "types/article";
 import { ICategorieResponse } from "types/categorie";
 
 
-const GRAPHQL_URL = <string>process.env.NEXT_PUBLIC_GRAPHQL_URL
 
 export const getCategories = async () => {
     const query = gql`
