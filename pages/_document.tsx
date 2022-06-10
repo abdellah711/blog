@@ -51,6 +51,21 @@ class MyDocument extends Document {
                     <script dangerouslySetInnerHTML={{
                         __html: loadCode
                     }}></script>
+                    <meta name='application-name' content='Blog' />
+                    <meta name='apple-mobile-web-app-capable' content='yes' />
+                    <meta name='apple-mobile-web-app-status-bar-style' content='default' />
+                    <meta name='apple-mobile-web-app-title' content='Blog' />
+                    <meta name='description' content='Blog web app' />
+                    <meta name='format-detection' content='telephone=no' />
+                    <meta name='mobile-web-app-capable' content='yes' />
+                    <meta name='msapplication-config' content='/icons/browserconfig.xml' />
+                    <meta name='msapplication-TileColor' content='#0E9CD9' />
+                    <meta name='msapplication-tap-highlight' content='no' />
+                    <meta name='theme-color' content='#000000' />
+
+                    <link rel='icon' href='/icons/favicon.ico' />
+                    <link rel='manifest' href='/manifest.json' />
+                    <link rel='shortcut icon' href='/favicon.ico' />
                 </Head>
                 <body>
                     <Main />

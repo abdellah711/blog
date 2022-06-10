@@ -5,6 +5,7 @@ This is a sample blog web application, you can check a demo [here](https://blog-
 - TypeScript
 - Styled components
 - Graphql
+- PWA
 
 ## Quick start
 1- Clone repo
