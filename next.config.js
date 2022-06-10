@@ -4,6 +4,9 @@ const nextConfig = {
   images: {
     domains: ["media.graphassets.com"],
   },
+  compiler:{
+    styledComponents: true,
+  },
   optimizeFonts: false,
   async rewrites(){
     return [

@@ -6,6 +6,7 @@ export const Container = styled.article`
     display: flex;
     flex-direction: column;
     gap: 2rem;
+    line-height: 1.9;
 `;
 
 export const MainImg = styled.img`
