@@ -10,14 +10,14 @@ import { ICategorie } from "types/categorie"
 import Head from "next/head"
 
 
-const BlogPage: NextPage<BlogPageProps> = ({ articles, recentArticles,categories, currentPage, totalPages }) => {
+const BlogPage: NextPage<BlogPageProps> = ({ articles, recentArticles,categories, currentPage, totalPages,categorie }) => {
     return (
         <>
         <Head>
             <title>Blog {currentPage != 1 ? `| page ${currentPage}`: ''}</title>
         </Head>
         <Layout
-            title='Recent Articles'
+            title={categorie ? `Categorie '${categorie}'`:'Recent articles'}
             sidebars={[
                 <CategoriesSidebar key="categories" categories={categories}/>,
                 <RecentPostsSidebar posts={recentArticles} key="recent-posts" />,
@@ -36,11 +36,12 @@ interface BlogPageProps {
     totalPages: number;
     recentArticles: IArticle[];
     categories: ICategorie[];
+    categorie: string| null;
 }
 
 export const getServerSideProps: GetServerSideProps<BlogPageProps> = async (ctx) => {
     const page = ctx.params?.page
-    const categorie = ctx.query?.c
+    const categorie = ctx.query?.c as string
     if (!page || page === '0')
         return { redirect: { permanent: false, destination: '/404' } }
 
@@ -52,7 +53,8 @@ export const getServerSideProps: GetServerSideProps<BlogPageProps> = async (ctx)
             currentPage: +page,
             recentArticles: recent,
             totalPages: Math.ceil(count / PAGE_ARTICLES_COUNT),
-            categories 
+            categories,
+            categorie: categorie ?? null
         }
     }
 }

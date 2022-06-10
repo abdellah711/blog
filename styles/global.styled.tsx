@@ -2,7 +2,7 @@ import styled, { createGlobalStyle } from 'styled-components';
 
 
 export const Global = createGlobalStyle`
-    body{
+    :root{
         --container-inline-pd: 10vw;
         --card-borderRadius: 12px;
     }
@@ -27,10 +27,11 @@ export const Global = createGlobalStyle`
         --color-gray-100: #99999925;
         --color-footer-bg: #394C68;
     }
+
     @media screen and (max-width:768px){
         :root{
             --container-inline-pd: 5vw; 
-        }    
+        } 
     }
 
     *, *::after, *::before{

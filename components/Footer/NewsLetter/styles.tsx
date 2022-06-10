@@ -13,6 +13,8 @@ export const Form = styled.form`
     border-radius: 5px;
     padding: .2rem;
     padding-right: .25rem;
+    display: flex;
+    flex-wrap: wrap;
 `;
 
 export const Input = styled.input`
@@ -24,7 +26,9 @@ export const Input = styled.input`
     font-family: inherit;
     color: var(--color-input-color);
     padding: .6rem 1.2rem .7rem;
-
+    flex: 1;
+    min-width: 0;
+    
     ::placeholder{
         color: var(--color-input-placeholderColor);
     }
