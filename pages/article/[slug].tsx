@@ -1,5 +1,6 @@
 import { ArticleContent, Comments } from "components/ArticleDetails"
 import { GetServerSideProps, NextPage } from "next"
+import Head from "next/head"
 import { getArticleDetails } from "services/articles"
 import { Container } from "styles/global.styled"
 import { IArticleDetails } from "types/article"
@@ -8,10 +9,15 @@ import { IArticleDetails } from "types/article"
 
 const ArticlePage: NextPage<ArticleProps> = ({ article }) => {
     return (
+        <>
+        <Head>
+            <title>Blog | {article.title}</title>
+        </Head>
         <Container>
             <ArticleContent article={article}/>
             <Comments comments={article.comments} slug={article.slug}/>
         </Container>
+        </>
     )
 }
 

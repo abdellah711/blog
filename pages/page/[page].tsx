@@ -7,10 +7,15 @@ import { getPageArticles } from 'services/articles'
 import { IArticle } from 'types/article'
 import { PAGE_ARTICLES_COUNT } from "config/variables"
 import { ICategorie } from "types/categorie"
+import Head from "next/head"
 
 
 const BlogPage: NextPage<BlogPageProps> = ({ articles, recentArticles,categories, currentPage, totalPages }) => {
     return (
+        <>
+        <Head>
+            <title>Blog {currentPage != 1 ? `| page ${currentPage}`: ''}</title>
+        </Head>
         <Layout
             title='Recent Articles'
             sidebars={[
@@ -21,6 +26,7 @@ const BlogPage: NextPage<BlogPageProps> = ({ articles, recentArticles,categories
             <ArticlesList articles={articles} />
             <Pagination currentPage={currentPage} totalPages={totalPages} baseUrl="/page/"/>
         </Layout>
+            </>
     )
 }
 

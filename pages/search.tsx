@@ -4,6 +4,7 @@ import Pagination from 'components/Pagination'
 import { CategoriesSidebar, RecentPostsSidebar } from 'components/Sidebar'
 import { PAGE_ARTICLES_COUNT } from 'config/variables'
 import { GetServerSideProps, NextPage } from 'next'
+import Head from 'next/head'
 import React from 'react'
 import { searchForArticles } from 'services/articles'
 import { IArticle } from 'types/article'
@@ -11,19 +12,24 @@ import { ICategorie } from 'types/categorie'
 
 
 
-const SearchPage: NextPage<SearchProps> = ({ articles,categories, searchQuery, recentArticles, currentPage, totalPages }) => {
+const SearchPage: NextPage<SearchProps> = ({ articles, categories, searchQuery, recentArticles, currentPage, totalPages }) => {
 
     return (
-        <Layout
-            title={`Result of ' ${searchQuery} '`}
-            sidebars={[
-                <CategoriesSidebar key="categories" categories={categories}/>,
-                <RecentPostsSidebar posts={recentArticles} key="recent-posts" />,
-            ]}
-        >
-            <ArticlesList articles={articles} />
-            <Pagination currentPage={currentPage} totalPages={totalPages} baseUrl={`search?q=${encodeURIComponent(searchQuery)}&p=`} />
-        </Layout>
+        <>
+            <Head>
+                <title>Blog | search for {searchQuery}</title>
+            </Head>
+            <Layout
+                title={`Result of ' ${searchQuery} '`}
+                sidebars={[
+                    <CategoriesSidebar key="categories" categories={categories} />,
+                    <RecentPostsSidebar posts={recentArticles} key="recent-posts" />,
+                ]}
+            >
+                <ArticlesList articles={articles} />
+                <Pagination currentPage={currentPage} totalPages={totalPages} baseUrl={`search?q=${encodeURIComponent(searchQuery)}&p=`} />
+            </Layout>
+        </>
     )
 }
 
@@ -42,7 +48,7 @@ export const getServerSideProps: GetServerSideProps<SearchProps> = async (contex
     if (!query)
         return { redirect: { permanent: false, destination: '/404' } }
 
-    const { articles, recent,categories, articlesConnection: { aggregate: { count } } } = await searchForArticles(query as string, page)
+    const { articles, recent, categories, articlesConnection: { aggregate: { count } } } = await searchForArticles(query as string, page)
     return {
         props: {
             articles,
