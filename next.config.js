@@ -25,7 +25,8 @@ const nextConfig = {
   },
   pwa: {
     dest: 'public',
-    runtimeCaching
+    runtimeCaching,
+    reloadOnOnline: false
   }
   
 
