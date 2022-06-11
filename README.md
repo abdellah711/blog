@@ -1,5 +1,5 @@
 # Blog
-This is a sample blog web application, you can check a demo [here](https://blog-next-ts.herokuapp.com/)
+This is a sample blog web application, you can check a demo [here](https://blog-one-psi-41.vercel.app/)
 ## Technologies used
 - NextJS
 - TypeScript
