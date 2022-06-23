@@ -6,6 +6,7 @@ import TwitterIcon from '../../assets/icons/twitter.svg'
 import ReactMarkdown from 'react-markdown';
 import CodeBlock from '../../utils/CodeBlock';
 import rehypeRaw from 'rehype-raw'
+import Image from 'next/image';
 
 interface Props {
     article: IArticleDetails;
@@ -24,7 +25,16 @@ const ArticleContent: FC<Props> = ({ article }) => {
                 <Styled.Title>{article.title}</Styled.Title>
                 <p>{Intl.DateTimeFormat('en', { dateStyle: 'full' }).format(new Date(article.createdAt))}</p>
             </header>
-            <Styled.MainImg src={article.image.url} />
+            <Styled.ImageContainer>
+                <Image
+                    src={article.image.url}
+                    width={article.image.width}
+                    height={article.image.height}
+                    layout='responsive'
+                    alt="Article featured image"
+                    sizes='(max-width: 768px) 90vw, 800px'
+                    priority />
+            </Styled.ImageContainer>
             <ReactMarkdown components={CodeBlock} rehypePlugins={[rehypeRaw]}>{article.content}</ReactMarkdown>
 
             <div>

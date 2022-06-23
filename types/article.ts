@@ -34,7 +34,9 @@ export interface IArticleDetails {
     slug: string;
     createdAt: string;
     image: {
-        url: string
+        url: string;
+        height: number;
+        width: number;
     };
     author: {
         name: string;

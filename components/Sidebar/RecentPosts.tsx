@@ -2,6 +2,7 @@ import * as Styled from './styles'
 import { FC } from 'react'
 import { IArticle } from 'types/article'
 import Link from 'next/link';
+import Image from 'next/image';
 
 
 interface Props {
@@ -22,12 +23,16 @@ const RecentPosts: FC<Props> = ({ posts }) => {
 
 const Post: FC<{ post: IArticle }> = ({ post }) => {
   return (
-    <Link href={`/article/${post.slug}`} passHref>
-      <Styled.ListItem>
-        <img src={post.image.url} style={{ borderRadius: 12, padding: 0 }} width="50" height={50} />
-        <p>{post.title}</p>
-      </Styled.ListItem>
-    </Link>
+    <li>
+      <Link href={`/article/${post.slug}`} passHref>
+        <Styled.ListItem>
+          <Styled.ImageContainer style={{ borderRadius: 12 }}>
+            <Image src={post.image.url} sizes="100px" layout="fill" alt={post.title} objectFit="cover" />
+          </Styled.ImageContainer>
+          <p>{post.title}</p>
+        </Styled.ListItem>
+      </Link>
+    </li>
   )
 
 }

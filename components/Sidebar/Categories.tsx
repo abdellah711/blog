@@ -3,6 +3,7 @@ import * as Styled from './styles'
 import Link from 'next/link'
 import { CATEGORIES_SIDEBAR_COUNT } from 'config/variables'
 import { FC } from 'react'
+import Image from 'next/image'
 
 interface Props {
   categories: ICategorie[];
@@ -14,7 +15,7 @@ const Categories: FC<Props> = ({ categories }) => {
     <Styled.Card>
       <h2>Categories</h2>
 
-      <ul>
+      <ul style={{listStyle:'none'}}>
         {categories.map(categorie => (<Categorie key={categorie.slug} categorie={categorie} />))}
 
         {
@@ -33,12 +34,24 @@ const Categories: FC<Props> = ({ categories }) => {
 
 const Categorie: FC<{ categorie: ICategorie }> = ({ categorie }) => {
   return (
-    <Link href={`/page/1?c=${categorie.slug}`} passHref>
-      <Styled.ListItem>
-        <img src={categorie.image.url} width="50" height="50" />
-        <p>{categorie.name}</p>
-      </Styled.ListItem>
-    </Link>
+    <li>
+      <Link href={`/page/1?c=${categorie.slug}`} passHref>
+        <Styled.ListItem>
+          <div style={{
+            backgroundColor: '#fff',
+            borderRadius: '50%',
+            padding: '.2rem',
+            overflow: 'hidden',
+          }}>
+
+            <Styled.ImageContainer>
+              <Image src={categorie.image.url} quality={100} sizes="80px" alt={categorie.name} layout="fill" objectFit='cover' />
+            </Styled.ImageContainer>
+          </div>
+          <p>{categorie.name}</p>
+        </Styled.ListItem>
+      </Link>
+    </li>
   )
 }
 

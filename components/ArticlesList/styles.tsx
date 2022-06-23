@@ -34,16 +34,18 @@ export const Card = styled.div`
     }
 `;
 
-export const Image = styled.img`
-    border-radius: var(--card-borderRadius);
-    width: 15rem;
-    aspect-ratio: 1;
-    object-fit: cover;
 
-    @media screen and (max-width: 700px) {
-        width: 100%;
-        aspect-ratio: 3/2;
+export const ImageContainer = styled.a`
+    border-radius: var(--card-borderRadius);
+    overflow: hidden;
+    grid-row: 3 span;
+    aspect-ratio: 3/2;
+    position: relative;
+    @media screen and (min-width: 700px) {
+        aspect-ratio: 1;
+        width: 240px;
     }
+
 `;
 
 export const Row = styled.div`

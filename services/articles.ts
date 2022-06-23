@@ -129,7 +129,9 @@ export const getArticleDetails = async (slug: string) => {
                 content
                 
                 image {
-                    url
+                    url,
+                    height,
+                    width
                 }
 
                 author {

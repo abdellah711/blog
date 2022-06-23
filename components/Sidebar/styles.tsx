@@ -39,12 +39,13 @@ export const ListItem = styled.a`
         color: var(--color-text-body);
     }
 
-    img{
-        background-color: #fff;
-        border-radius: 50%;
-        object-fit: cover;
-        padding: .2rem;
-    }
+`;
+
+export const ImageContainer = styled.div`
+    overflow: hidden;
+    aspect-ratio: 1;
+    width: 50px;
+    position: relative;
 `;
 
 export const ShowMore = styled.a`

@@ -2,12 +2,13 @@ import React from 'react'
 import Image from 'next/image'
 import styled from 'styled-components';
 import Link from 'next/link';
+import LogoSrc from 'public/assets/images/logo.png';
 
 const Logo = () => {
   return (
     <Link href={'/'} passHref>
       <Container>
-          <Image src={'/assets/images/logo.png'} width="50" height="50"/>
+          <Image src={LogoSrc} width={60} height={60} alt='logo' priority/>
           <h1>Blog</h1>
       </Container>
     </Link>

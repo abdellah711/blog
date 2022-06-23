@@ -13,7 +13,7 @@ const ArticlesList: FC<Props> = ({ articles }) => {
         <div>
             {
                 articles?.length > 0 ?
-                    articles.map(article => (<ArticleItem key={article.slug} article={article} />))
+                    articles.map((article, i) => (<ArticleItem key={article.slug} article={article} imgPriority={i < 2} />))
                     : (
                         <Styled.Empty>No articles found</Styled.Empty>
                     )

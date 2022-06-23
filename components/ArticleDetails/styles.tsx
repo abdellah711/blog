@@ -9,10 +9,11 @@ export const Container = styled.article`
     line-height: 1.9;
 `;
 
-export const MainImg = styled.img`
+export const ImageContainer = styled.div`
     width:100%;
     border-radius: 1rem;
     margin-block: 1rem;
+    overflow: hidden;
 `;
 
 
